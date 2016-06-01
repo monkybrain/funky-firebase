@@ -1,5 +1,5 @@
 # funky-firebase
 
-Simple functional, Ramda wrapper for Firebase
+Simple functional [ramda](http://ramdajs.com/) wrapper for Firebase
 
 More features to be added when needed...
