@@ -2,7 +2,7 @@
 
 Simple functional wrapper for Firebase.
 
-All functions are curried to taste (with [Ramda](http://ramdajs.com/))
+All functions curried to taste (with [Ramda](http://ramdajs.com/))
 
 Poorly documented and far from complete :-)
 
