@@ -21,10 +21,12 @@ Poorly documented and far from complete :-)
 Examples (CoffeeScript)
 
 ```
+# Get value at ref and print to console
 get ref
-.then (value) -> console.log value        # Get value at ref and print to console
+.then (value) -> console.log value        
 
-set ref,                                  # Set value at ref to provided data
+# Set value at ref to provided data
+set ref,                                  
   id: 0,
   name: 'John'
 
@@ -42,7 +44,6 @@ Mathematical operations
 Examples
 ```
 add(ref, 20)        # add 10 to value at ref
-subtract(ref, 10)   # subtract 10 from value at ref
 ```
 
 ### Next order compositions
@@ -55,5 +56,4 @@ Examples
 
 ```
 increment(ref)        # increment value at ref by 1
-decrement(ref)        # decrement value at ref by 1
 ```
