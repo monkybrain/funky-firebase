@@ -1,6 +1,4 @@
-
 # Node Modules
-# testP = require 'blue-tape'
 test = require 'tape'
 fs = require 'fs'
 async = require 'async'
@@ -13,7 +11,7 @@ core = require '../../dist/core/core'
 firebase.initializeApp JSON.parse fs.readFileSync 'res/credentials.json', 'utf-8'
 
 # Get ref
-baseRef = firebase.database().ref('/funky-firebase')
+baseRef = firebase.database().ref('/funky-firebase/core')
 
 # Init and populate array of tests
 tests = []

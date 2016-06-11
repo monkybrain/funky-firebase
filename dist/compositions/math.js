@@ -26,9 +26,13 @@ subtract = curry(function(ref, data) {
 
 /* Second order compositions */
 
-increment = add(1);
+increment = curry(function(ref) {
+  return add(ref, 1);
+});
 
-decrement = subtract(1);
+decrement = curry(function(ref) {
+  return subtract(ref, 1);
+});
 
 
 /* EXPORTS */

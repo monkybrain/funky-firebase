@@ -15,8 +15,8 @@ subtract = curry (ref, data) ->
 
 ### Second order compositions ###
 
-increment = add 1
-decrement = subtract 1
+increment = curry (ref) -> add ref, 1
+decrement = curry (ref) -> subtract ref, 1
 
 ### EXPORTS ###
 module.exports =
