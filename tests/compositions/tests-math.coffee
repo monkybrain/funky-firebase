@@ -19,6 +19,9 @@ tests = []
 
 tests.push -> test 'Increment', (t) ->
 
+  t.plan 1
+  t.timeoutAfter 5000
+
   ref = baseRef.child 'increment'
   input = 0
 
@@ -34,14 +37,14 @@ tests.push -> test 'Increment', (t) ->
 
     # Check if <input> equals <output>
     t.deepEqual (input + 1), output, "Value incremented successfully"
-    t.end()
 
   # Catch and report errors
-  .catch (err) ->
-    t.error
-    t.end()
+  .catch t.error
 
 tests.push -> test 'Decrement', (t) ->
+
+  t.plan 1
+  t.timeoutAfter 5000
 
   ref = baseRef.child 'decrement'
   input = 1
@@ -58,11 +61,8 @@ tests.push -> test 'Decrement', (t) ->
 
     # Check if <input> equals <output>
     t.deepEqual (input - 1), output, "Value decremented successfully"
-    t.end()
 
   # Catch and report errors
-  .catch (err) ->
-    t.error
-    t.end()
+  .catch t.error
 
-async.parallel tests
+async.parallel tests, -> console.log "done"
