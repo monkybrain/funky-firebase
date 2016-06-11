@@ -12,45 +12,31 @@ Poorly documented and far from complete :-)
 
 ### Core functions
 
-- get (ref)
-- update (ref, data)
-- set (ref, data)
-- push (ref, data)
-- transaction (ref, fn)
+- get(ref)
+- update(ref, data)
+- set(ref, data)
+- push(ref, data)
+- transaction(ref, fn)
 
-Examples (CoffeeScript)
-
-```
-# Get value at ref and print to console
-get ref
-.then (value) -> console.log value        
-
-# Set value at ref to provided data
-set ref,                                  
-  id: 0,
-  name: 'John'
-
-```
-
-
-
-
-### Core compositions
+### First order compositions
 
 Mathematical operations
-- add (ref, data)
-- subtract (ref, data)
+- add(ref, term)
+- subtract(ref, term)
+- multiply(ref, factor)
+- divide(ref, divisor)
 
 Examples
 ```
-add(ref, 20)        # add 10 to value at ref
+add(ref, 10)        # add 10 to value at ref
+divide(ref, 10)     # divide value at ref by 10
 ```
 
-### Next order compositions
+### Second order compositions
 
 Mathematical operations
-- increment (ref)
-- decrement (ref)
+- increment(ref)
+- decrement(ref)
 
 Examples
 

@@ -1,4 +1,4 @@
-var add, curry, decrement, get, increment, push, ref1, remove, set, subtract, transaction, update;
+var add, curry, decrement, divide, get, increment, multiply, push, ref1, remove, set, subtract, transaction, update;
 
 curry = require('ramda').curry;
 
@@ -23,6 +23,22 @@ subtract = curry(function(ref, data) {
   return transaction(ref, fn);
 });
 
+multiply = curry(function(ref, data) {
+  var fn;
+  fn = function(value) {
+    return value * data;
+  };
+  return transaction(ref, fn);
+});
+
+divide = curry(function(ref, data) {
+  var fn;
+  fn = function(value) {
+    return value / data;
+  };
+  return transaction(ref, fn);
+});
+
 
 /* Second order compositions */
 
@@ -40,6 +56,8 @@ decrement = curry(function(ref) {
 module.exports = {
   add: add,
   subtract: subtract,
+  multiply: multiply,
+  divide: divide,
   increment: increment,
   decrement: decrement
 };

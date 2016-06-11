@@ -17,6 +17,56 @@ baseRef = firebase.database().ref('/funky-firebase/compositions/math')
 # Init and populate array of tests
 tests = []
 
+tests.push -> test 'Multiply', (t) ->
+
+  t.plan 1
+  t.timeoutAfter 5000
+
+  ref = baseRef.child 'multiply'
+  input = 10
+  factor = 10
+
+  # Set value at <ref> to <input>
+  core.set ref, input
+
+  # Increment value at <ref>
+  .then -> math.multiply ref, factor
+
+  # Get value at <ref> as <output>
+  .then -> core.get ref
+  .then (output) ->
+
+    # Check if <input> equals <output>
+    t.deepEqual (input * factor), output, "Value multiplied successfully"
+
+  # Catch and report errors
+  .catch t.error
+
+tests.push -> test 'Divide', (t) ->
+
+  t.plan 1
+  t.timeoutAfter 5000
+
+  ref = baseRef.child 'divide'
+  input = 100
+  factor = 10
+
+  # Set value at <ref> to <input>
+  core.set ref, input
+
+  # Increment value at <ref>
+  .then -> math.divide ref, factor
+
+  # Get value at <ref> as <output>
+  .then -> core.get ref
+  .then (output) ->
+
+    # Check if <input> equals <output>
+    t.deepEqual (input / factor), output, "Value divided successfully"
+
+  # Catch and report errors
+  .catch t.error
+
 tests.push -> test 'Increment', (t) ->
 
   t.plan 1
