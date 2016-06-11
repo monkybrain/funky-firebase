@@ -15,8 +15,7 @@ firebase.initializeApp JSON.parse fs.readFileSync 'res/credentials.json', 'utf-8
 # Get ref
 baseRef = firebase.database().ref('/funky-firebase')
 
-value = 'fish fingers'
-
+# Init and populate array of tests
 tests = []
 
 tests.push -> test 'Set and get value', (t) ->
@@ -24,13 +23,20 @@ tests.push -> test 'Set and get value', (t) ->
   ref = baseRef.child 'set_and_get'
   input = "fish fingers"
 
-  # Set
+  # Set value at <ref> to <input>
   core.set ref, input
-  # Get
+
+  # Get value at <ref> as <output>
   .then -> core.get ref
-  # Check if equal
   .then (output) ->
+
+    # Check if <input> equals <output>
     t.deepEqual input, output
+    t.end()
+
+  # Catch and report errors
+  .catch (err) ->
+    t.error
     t.end()
 
 tests.push -> test 'Remove value', (t) ->
@@ -42,5 +48,6 @@ tests.push -> test 'Remove value', (t) ->
   .then (output) ->
     t.deepEqual output, null
     t.end()
+  .catch t.error
 
 async.parallel tests
