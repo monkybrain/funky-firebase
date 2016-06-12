@@ -29,14 +29,14 @@ tests.push -> test 'Set and get value', (t) ->
   t.plan 1
   ref = baseRef.child 'set_and_get'
 
-  # Set value at <ref> to <input>
+  # Set value at ref to input
   core.set ref, input.string
 
-  # Get value at <ref> as <output>
+  # Get value at ref
   .then -> core.get ref
 
-  # Check if <input> equals <output>
-  .then (output) -> t.deepEqual input.string, output
+  # TEST: Value should equal input
+  .then (value) -> t.deepEqual value, input.string
 
   # Catch and report errors
   .catch (err) -> t.error
@@ -44,20 +44,19 @@ tests.push -> test 'Set and get value', (t) ->
 tests.push -> test 'Remove value', (t) ->
 
   t.plan 1
-
   ref = baseRef.child 'remove'
 
-  # Set value at <ref> to <input>
+  # Set value at ref to input
   core.set ref, input.string
 
-  # Remove value at <ref>
+  # Remove value at ref
   .then -> core.remove ref
 
-  # Get value at <ref>
+  # Get value at ref
   .then -> core.get ref
 
-  # Value at <ref> should be <null>
-  .then (output) -> t.deepEqual output, null
+  # TEST: Value should be null
+  .then (value) -> t.deepEqual value, null
 
   # Catch and report errors
   .catch t.error
@@ -66,14 +65,14 @@ tests.push -> test 'Remove value', (t) ->
 tests.push -> test 'On value changed', (t) ->
 
   t.plan 1
-
   ref = baseRef.child 'value_changed'
 
-  # Set value at <ref> to <input>
+  # Set value at ref to input
   core.set ref, input.string
-  # Attach callback to value change at <ref>
-  .then -> core.on ref, 'value',
-    # Callback
-    (val) -> t.deepEqual input.string, val
+  # Attach callback to value change at ref
+  .then -> core.onValue ref,
+    # TEST: Value should equal input
+    (value) -> t.deepEqual value, input.string
 
+#tests[2]()
 async.parallel tests

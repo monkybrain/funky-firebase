@@ -1,4 +1,4 @@
-var curry, getSnapshot, getValueFromSnapshot, pipeP, ref1;
+var curry, getSnapshot, getValue, pipeP, ref1;
 
 ref1 = require('ramda'), curry = ref1.curry, pipeP = ref1.pipeP;
 
@@ -9,7 +9,7 @@ getSnapshot = function(ref) {
   return ref.once('value');
 };
 
-getValueFromSnapshot = function(snapshot) {
+getValue = function(snapshot) {
   return snapshot.val();
 };
 
@@ -17,7 +17,7 @@ getValueFromSnapshot = function(snapshot) {
 /* CORE FUNCTIONS */
 
 module.exports = {
-  get: curry(pipeP(getSnapshot, getValueFromSnapshot)),
+  get: curry(pipeP(getSnapshot, getValue)),
   set: curry(function(ref, data) {
     return ref.set(data);
   }),
@@ -33,9 +33,9 @@ module.exports = {
   transaction: curry(function(ref, fn) {
     return ref.transaction(fn);
   }),
-  on: curry(function(ref, event, fn) {
-    return ref.on(event, function(s) {
-      return fn(getValueFromSnapshot(s));
+  onValue: curry(function(ref, fn) {
+    return ref.on('value', function(snapshot) {
+      return fn(getValue(snapshot));
     });
   })
 };

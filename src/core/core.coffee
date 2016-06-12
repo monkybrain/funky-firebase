@@ -4,13 +4,13 @@
 ### HELPERS ###
 
 getSnapshot = (ref) -> ref.once 'value'
-getValueFromSnapshot = (snapshot) -> snapshot.val()
+getValue = (snapshot) -> snapshot.val()
 
 ### CORE FUNCTIONS ###
 
 module.exports =
 
-  get: curry pipeP getSnapshot, getValueFromSnapshot
+  get: curry pipeP getSnapshot, getValue
 
   set: curry (ref, data) -> ref.set data
 
@@ -22,4 +22,4 @@ module.exports =
 
   transaction: curry (ref, fn) -> ref.transaction fn
 
-  on: curry (ref, event, fn) -> ref.on event, (s) -> fn getValueFromSnapshot(s)
+  onValue: curry (ref, fn) -> ref.on 'value', (snapshot) -> fn getValue(snapshot)

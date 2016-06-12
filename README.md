@@ -12,11 +12,27 @@ Poorly documented and far from complete :-)
 
 ### Core functions
 
+Actions
 - get(ref)
 - update(ref, data)
 - set(ref, data)
 - push(ref, data)
 - transaction(ref, fn)
+
+Subscribe
+- onValue(ref, callback(value))
+
+Examples
+```
+# Set value at ref
+set(ref, {key: 'value'});
+
+# Print value at ref on change
+onValue(ref, function(value) {
+  console.log(value)
+  });
+```
+
 
 ### First order compositions
 
