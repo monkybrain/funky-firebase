@@ -1,6 +1,6 @@
 {
   "name": "funky-firebase",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "",
   "main": "dist/firebase.js",
   "scripts": {
@@ -27,9 +27,7 @@
   "devDependencies": {
     "async": "^2.0.0-rc.6",
     "blue-tape": "^0.2.0",
-    "coffee-script": "^1.10.0",
     "firebase": "^3.0.4",
-    "promise": "^7.1.1",
     "tape": "^4.5.1"
   }
 }
