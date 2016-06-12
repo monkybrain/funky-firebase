@@ -32,5 +32,10 @@ module.exports = {
   }),
   transaction: curry(function(ref, fn) {
     return ref.transaction(fn);
+  }),
+  on: curry(function(ref, event, fn) {
+    return ref.on(event, function(s) {
+      return fn(getValueFromSnapshot(s));
+    });
   })
 };

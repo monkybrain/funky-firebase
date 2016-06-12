@@ -21,3 +21,5 @@ module.exports =
   push: curry (ref, data) -> ref.push data
 
   transaction: curry (ref, fn) -> ref.transaction fn
+
+  on: curry (ref, event, fn) -> ref.on event, (s) -> fn getValueFromSnapshot(s)
