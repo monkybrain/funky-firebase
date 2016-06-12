@@ -19,7 +19,7 @@ Actions
 - push(ref, data)
 - transaction(ref, fn)
 
-Subscribe
+Events
 - onValue(ref, callback(value))
 
 Examples

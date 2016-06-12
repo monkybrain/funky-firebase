@@ -24,6 +24,7 @@ input =
   object:
     key: 'value'
 
+# 1 - Set and get value
 tests.push -> test 'Set and get value', (t) ->
 
   t.plan 1
@@ -41,6 +42,7 @@ tests.push -> test 'Set and get value', (t) ->
   # Catch and report errors
   .catch (err) -> t.error
 
+# 2 - Remove value
 tests.push -> test 'Remove value', (t) ->
 
   t.plan 1
