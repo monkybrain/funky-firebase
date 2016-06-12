@@ -27,6 +27,9 @@ Examples
 # Set value at ref
 set(ref, {key: 'value'});
 
+# Get and print value at ref
+get(ref).then(console.log)
+
 # Print value at ref on change
 onValue(ref, function(value) {
   console.log(value)
