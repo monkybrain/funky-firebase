@@ -13,22 +13,25 @@ Poorly documented and far from complete :-)
 ### Core functions
 
 Actions
-- get(ref) -> value
+- get(ref)
+  - returns value at ref
 - update(ref, data)
 - set(ref, data)
 - push(ref, data)
 - transaction(ref, fn)
 
 References
-- child(ref, path) -> ref
-- url(ref) -> url string
+- child(ref, path)
+  - returns ref to child
+- url(ref)
+  - returns absolute url (string)
 
 Events
 - onValue(ref, callback(value))
-- onChildAdded(ref, callback(value, prevChildKey))
-- onChildChanged(ref, callback(value, prevChildKey))
-- onChildMoved(ref, callback(value, prevChildKey))
-- onChildRemoved(ref, callback(value, prevChildKey))
+- onChildAdded(ref, callback(value, [prevChildKey]))
+- onChildChanged(ref, callback(value, [prevChildKey]))
+- onChildMoved(ref, callback(value, [prevChildKey]))
+- onChildRemoved(ref, callback(value, [prevChildKey]))
 
 Examples
 ```
