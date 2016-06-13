@@ -16,13 +16,13 @@ Actions
 - get(ref)
   - resolves value at ref
 - update(ref, data)
-  - resolves to null when done
+  - resolves when done
 - set(ref, data)
-  - resolves to null when done
+  - resolves when done
 - push(ref, data)
-  - resolves to null when done
+  - resolves when done
 - transaction(ref, fn)
-  - resolves to null when done
+  - resolves when done
 
 References
 - child(ref, path)
