@@ -5,10 +5,13 @@
 
 getSnapshot = (ref) -> ref.once 'value'
 getValue = (snapshot) -> snapshot.val()
+onEvent = (ref, event, fn) -> ref.on event, (snapshot, prevChildKey) -> fn getValue(snapshot), prevChildKey
 
 ### CORE FUNCTIONS ###
 
 module.exports =
+
+  ### OPERATIONS ###
 
   get: curry pipeP getSnapshot, getValue
 
@@ -22,4 +25,16 @@ module.exports =
 
   transaction: curry (ref, fn) -> ref.transaction fn
 
-  onValue: curry (ref, fn) -> ref.on 'value', (snapshot) -> fn getValue(snapshot)
+  child: curry (ref, path) -> ref.child path
+
+  ### EVENTS ###
+
+  onValue: curry (ref, fn) -> onEvent ref, 'value', fn
+
+  onChildAdded: curry (ref, fn) -> onEvent ref, 'child_added', fn
+
+  onChildChanged: curry (ref, fn) -> onEvent ref, 'child_changed', fn
+
+  onChildMoved: curry (ref, fn) -> onEvent ref, 'child_moved', fn
+
+  onChildRemoved: curry (ref, fn) -> onEvent ref, 'child_removed', fn

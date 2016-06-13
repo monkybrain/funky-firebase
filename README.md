@@ -13,14 +13,21 @@ Poorly documented and far from complete :-)
 ### Core functions
 
 Actions
-- get(ref)
+- get(ref) -> value
 - update(ref, data)
 - set(ref, data)
 - push(ref, data)
 - transaction(ref, fn)
 
+References
+- child(ref, path) -> ref
+
 Events
 - onValue(ref, callback(value))
+- onChildAdded(ref, callback(value, prevChildKey))
+- onChildChanged(ref, callback(value, prevChildKey))
+- onChildMoved(ref, callback(value, prevChildKey))
+- onChildRemoved(ref, callback(value, prevChildKey))
 
 Examples
 ```

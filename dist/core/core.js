@@ -1,4 +1,4 @@
-var curry, getSnapshot, getValue, pipeP, ref1;
+var curry, getSnapshot, getValue, onEvent, pipeP, ref1;
 
 ref1 = require('ramda'), curry = ref1.curry, pipeP = ref1.pipeP;
 
@@ -13,10 +13,18 @@ getValue = function(snapshot) {
   return snapshot.val();
 };
 
+onEvent = function(ref, event, fn) {
+  return ref.on(event, function(snapshot, prevChildKey) {
+    return fn(getValue(snapshot), prevChildKey);
+  });
+};
+
 
 /* CORE FUNCTIONS */
 
 module.exports = {
+
+  /* OPERATIONS */
   get: curry(pipeP(getSnapshot, getValue)),
   set: curry(function(ref, data) {
     return ref.set(data);
@@ -33,9 +41,24 @@ module.exports = {
   transaction: curry(function(ref, fn) {
     return ref.transaction(fn);
   }),
+  child: curry(function(ref, path) {
+    return ref.child(path);
+  }),
+
+  /* EVENTS */
   onValue: curry(function(ref, fn) {
-    return ref.on('value', function(snapshot) {
-      return fn(getValue(snapshot));
-    });
+    return onEvent(ref, 'value', fn);
+  }),
+  onChildAdded: curry(function(ref, fn) {
+    return onEvent(ref, 'child_added', fn);
+  }),
+  onChildChanged: curry(function(ref, fn) {
+    return onEvent(ref, 'child_changed', fn);
+  }),
+  onChildMoved: curry(function(ref, fn) {
+    return onEvent(ref, 'child_moved', fn);
+  }),
+  onChildRemoved: curry(function(ref, fn) {
+    return onEvent(ref, 'child_removed', fn);
   })
 };

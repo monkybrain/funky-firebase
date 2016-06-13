@@ -20,6 +20,7 @@ tests = []
 # Test values
 input =
   string: "Come on you irons!"
+  child: 'child'
   number: 10
   object:
     key: 'value'
@@ -63,18 +64,4 @@ tests.push -> test 'Remove value', (t) ->
   # Catch and report errors
   .catch t.error
 
-# 3 - On value changed
-tests.push -> test 'On value changed', (t) ->
-
-  t.plan 1
-  ref = baseRef.child 'value_changed'
-
-  # Set value at ref to input
-  core.set ref, input.string
-  # Attach callback to value change at ref
-  .then -> core.onValue ref,
-    # TEST: Value should equal input
-    (value) -> t.deepEqual value, input.string
-
-#tests[2]()
 async.parallel tests
