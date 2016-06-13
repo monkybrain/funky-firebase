@@ -14,11 +14,15 @@ Poorly documented and far from complete :-)
 
 Actions
 - get(ref)
-  - returns value at ref
+  - resolves value at ref
 - update(ref, data)
+  - resolves to null when done
 - set(ref, data)
+  - resolves to null when done
 - push(ref, data)
+  - resolves to null when done
 - transaction(ref, fn)
+  - resolves to null when done
 
 References
 - child(ref, path)
