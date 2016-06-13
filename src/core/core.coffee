@@ -25,7 +25,11 @@ module.exports =
 
   transaction: curry (ref, fn) -> ref.transaction fn
 
+  ### REFERENCES ###
+
   child: curry (ref, path) -> ref.child path
+
+  url: curry (ref) -> ref.toString()
 
   ### EVENTS ###
 

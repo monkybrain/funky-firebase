@@ -21,6 +21,7 @@ Actions
 
 References
 - child(ref, path) -> ref
+- url(ref) -> url string
 
 Events
 - onValue(ref, callback(value))

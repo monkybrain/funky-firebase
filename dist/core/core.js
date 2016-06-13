@@ -41,8 +41,13 @@ module.exports = {
   transaction: curry(function(ref, fn) {
     return ref.transaction(fn);
   }),
+
+  /* REFERENCES */
   child: curry(function(ref, path) {
     return ref.child(path);
+  }),
+  url: curry(function(ref) {
+    return ref.toString();
   }),
 
   /* EVENTS */
