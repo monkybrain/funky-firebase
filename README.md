@@ -64,8 +64,8 @@ grandChild = child(baseRef, '/child/grandchild');
 console.log(url(grandChild)); # e.g. 'https://test.firebaseio.com/child/grandchild'
 ```
 
-### Events (async/callback)
-Functions are asynchronous and take callbacks as second parameter
+### Events
+Functions are asynchronous and take callbacks as second argument
 
 **onValue(ref, callback(value))**
 
