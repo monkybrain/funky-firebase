@@ -91,11 +91,19 @@ onValue(ref, function(value) {
 
 **add(ref, term)**
 
+Resolves when operation complete
+
 **subtract(ref, term)**
+
+Resolves when operation complete
 
 **multiply(ref, factor)**
 
+Resolves when operation complete
+
 **divide(ref, divisor)**
+
+Resolves when operation complete
 
 _Examples_
 ```
@@ -109,7 +117,11 @@ divide(ref, 10)     # divide value at ref by 10
 
 **increment(ref)**
 
+Resolves when operation complete
+
 **decrement(ref)**
+
+Resolves when operation complete
 
 _Examples_
 
