@@ -42,7 +42,7 @@ Returns ref to child
 
 **url(ref)**
 
-Returns absolute url (string)
+Returns absolute url (string) to ref
 
 #### Events (async/callback)
 
