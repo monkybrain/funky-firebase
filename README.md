@@ -12,32 +12,51 @@ Poorly documented and far from complete :-)
 
 ### Core functions
 
-Actions
-- get(ref)
-  - resolves value at ref
-- update(ref, data)
-  - resolves when done
-- set(ref, data)
-  - resolves when done
-- push(ref, data)
-  - resolves when done
-- transaction(ref, fn)
-  - resolves when done
+#### Operations (async/promise)
 
-References
-- child(ref, path)
-  - returns ref to child
-- url(ref)
-  - returns absolute url (string)
+**get(ref)**
 
-Events
-- onValue(ref, callback(value))
-- onChildAdded(ref, callback(value, [prevChildKey]))
-- onChildChanged(ref, callback(value, [prevChildKey]))
-- onChildMoved(ref, callback(value, [prevChildKey]))
-- onChildRemoved(ref, callback(value, [prevChildKey]))
+Resolves value at ref
 
-Examples
+**update(ref, data)**
+
+Resolves when operation complete
+
+**set(ref, data)**
+
+Resolves when operation complete
+
+**push(ref, data)**
+
+Resolves when operation complete
+
+**transaction(ref, fn)**
+
+Resolves when operation complete
+
+#### References (synchronous)
+
+**child(ref, path)**
+
+Returns ref to child
+
+**url(ref)**
+
+Returns absolute url (string)
+
+#### Events (async/callback)
+
+**onValue(ref, callback(value))**
+
+**onChildAdded(ref, callback(value, [prevChildKey]))**
+
+**onChildChanged(ref, callback(value, [prevChildKey]))**
+
+**onChildMoved(ref, callback(value, [prevChildKey]))**
+
+**onChildRemoved(ref, callback(value, [prevChildKey]))**
+
+_Examples_
 ```
 # Set value at ref
 set(ref, {key: 'value'});
@@ -54,13 +73,17 @@ onValue(ref, function(value) {
 
 ### First order compositions
 
-Mathematical operations
-- add(ref, term)
-- subtract(ref, term)
-- multiply(ref, factor)
-- divide(ref, divisor)
+#### Mathematical operations
 
-Examples
+**add(ref, term)**
+
+**subtract(ref, term)**
+
+**multiply(ref, factor)**
+
+**divide(ref, divisor)**
+
+_Examples_
 ```
 add(ref, 10)        # add 10 to value at ref
 divide(ref, 10)     # divide value at ref by 10
@@ -68,11 +91,13 @@ divide(ref, 10)     # divide value at ref by 10
 
 ### Second order compositions
 
-Mathematical operations
-- increment(ref)
-- decrement(ref)
+#### Mathematical operations
 
-Examples
+**increment(ref)**
+
+**decrement(ref)**
+
+_Examples_
 
 ```
 increment(ref)        # increment value at ref by 1
