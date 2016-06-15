@@ -8,15 +8,16 @@ Uses promises for async operations
 
 Poorly documented and far from complete :-)
 
-## Methods
 
-### Core functions
 
-#### Operations (async/promise)
+## Core functions
+
+### Operations
+Functions are asynchronous and return promises
 
 **get(ref)**
 
-Resolves value at ref
+Resolves with value at ref
 
 **update(ref, data)**
 
@@ -34,7 +35,17 @@ Resolves when operation complete
 
 Resolves when operation complete
 
-#### References (synchronous)
+_Examples_
+```
+# Get and print value at ref
+get(ref).then(console.log)
+
+# Set value at ref
+set(ref, {key: 'value'});
+```
+
+### References
+Functions are synchronous
 
 **child(ref, path)**
 
@@ -44,7 +55,17 @@ Returns ref to child
 
 Returns absolute url (string) to ref
 
-#### Events (async/callback)
+_Examples_
+```
+# Get ref to grandchild of base reference
+grandChild = child(baseRef, '/child/grandchild');
+
+# Get absolute url and print to console
+console.log(url(grandChild)); # e.g. 'https://test.firebaseio.com/child/grandchild'
+```
+
+### Events (async/callback)
+Functions are asynchronous and take callbacks as second parameter
 
 **onValue(ref, callback(value))**
 
@@ -56,14 +77,7 @@ Returns absolute url (string) to ref
 
 **onChildRemoved(ref, callback(value, [prevChildKey]))**
 
-_Examples_
 ```
-# Set value at ref
-set(ref, {key: 'value'});
-
-# Get and print value at ref
-get(ref).then(console.log)
-
 # Print value at ref on change
 onValue(ref, function(value) {
   console.log(value)
@@ -71,9 +85,9 @@ onValue(ref, function(value) {
 ```
 
 
-### First order compositions
+## First order compositions
 
-#### Mathematical operations
+### Mathematical operations
 
 **add(ref, term)**
 
@@ -89,9 +103,9 @@ add(ref, 10)        # add 10 to value at ref
 divide(ref, 10)     # divide value at ref by 10
 ```
 
-### Second order compositions
+## Second order compositions
 
-#### Mathematical operations
+### Mathematical operations
 
 **increment(ref)**
 
