@@ -1,6 +1,6 @@
 {
   "name": "funky-firebase",
-  "version": "0.0.12",
+  "version": "0.1.0",
   "description": "",
   "main": "dist/firebase.js",
   "scripts": {
