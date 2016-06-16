@@ -4,7 +4,7 @@ Simple functional wrapper for Firebase.
 
 Why? Because _point-free_ composition > _pointless_ method chaining :-)
 
-All functions curried to taste (with [Ramda](http://ramdajs.com/))
+All functions curried to taste (using the excellent [ramda](http://ramdajs.com/) library)
 
 Uses promises for async operations
 
