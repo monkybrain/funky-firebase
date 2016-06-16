@@ -2,13 +2,13 @@
 
 Simple functional wrapper for Firebase.
 
+Why? Because _point-free_ composition > _pointless_ method chaining :-)
+
 All functions curried to taste (with [Ramda](http://ramdajs.com/))
 
 Uses promises for async operations
 
 Poorly documented and far from complete :-)
-
-
 
 ## Core functions
 
@@ -58,10 +58,10 @@ Returns absolute url (string) to ref
 _Examples_
 ```
 # Get ref to grandchild of base reference
-grandChild = child(baseRef, '/child/grandchild');
+grandchild = child(baseRef, '/child/grandchild');
 
 # Get absolute url and print to console
-console.log(url(grandChild)); # e.g. 'https://test.firebaseio.com/child/grandchild'
+console.log(url(grandchild)); # e.g. 'https://test.firebaseio.com/child/grandchild'
 ```
 
 ### Events
@@ -117,9 +117,13 @@ divide(ref, 10)     # divide value at ref by 10
 
 **increment(ref)**
 
+Equivalent to `add(ref, 1)`
+
 Resolves when operation complete
 
 **decrement(ref)**
+
+Equivalent to `subtract(ref, 1)`
 
 Resolves when operation complete
 
