@@ -50,6 +50,29 @@ module.exports = {
     return ref.toString();
   }),
 
+  /* QUERIES */
+  endAt: curry(function(value, ref) {
+    return ref.endAt(value);
+  }),
+  startAt: curry(function(value, ref) {
+    return ref.startAt(value);
+  }),
+  equalTo: curry(function(value, ref) {
+    return ref.equalTo(value);
+  }),
+  limitToFirst: curry(function(num, ref) {
+    return ref.limitToFirst(num);
+  }),
+  limitToLast: curry(function(num, ref) {
+    return ref.limitToLast(num);
+  }),
+  orderByKey: curry(function(ref) {
+    return ref.orderByKey();
+  }),
+  orderByValue: curry(function(ref) {
+    return ref.orderByValue();
+  }),
+
   /* EVENTS */
   onValue: curry(function(ref, fn) {
     return onEvent(ref, 'value', fn);

@@ -31,6 +31,28 @@ module.exports =
 
   url: curry (ref) -> ref.toString()
 
+  ### QUERIES ###
+
+  # Start, end, equal
+
+  endAt: curry (value, ref) -> ref.endAt value
+
+  startAt: curry (value, ref) -> ref.startAt value
+
+  equalTo: curry (value, ref) -> ref.equalTo value
+
+  # Limit results
+
+  limitToFirst: curry (num, ref) -> ref.limitToFirst num
+
+  limitToLast: curry (num, ref) -> ref.limitToLast num
+
+  # Order
+
+  orderByKey: curry (ref) -> ref.orderByKey()
+
+  orderByValue: curry (ref) -> ref.orderByValue()
+
   ### EVENTS ###
 
   onValue: curry (ref, fn) -> onEvent ref, 'value', fn

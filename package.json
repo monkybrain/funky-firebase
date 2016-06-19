@@ -22,6 +22,7 @@
   },
   "homepage": "https://github.com/monkybrain/funky-firebase#readme",
   "dependencies": {
+    "promise": "^7.1.1",
     "ramda": "^0.21.0"
   },
   "devDependencies": {
