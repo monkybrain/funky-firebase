@@ -136,17 +136,21 @@ Functions are asynchronous and resolve with query result
 
 _Examples_
 ```
-# Get user by email address
+### Get user by email address ###
 
+# Get ref
 users = child(ref, 'users');
 
+# Set value at ref
 set(users, [
   {name: 'Thor', email: 'thor@valhalla.is'},
   {name: 'Odin', email: 'admin@valhalla.is'}
 }]);
 
+# Partially apply 'getByChild' function
 getUserByEmail = getByChild(users, 'email');
 
+# User partially applied 'getByChild' function
 getUserByEmail('admin@valhalla.is')
 .then(console.log)
 ```
