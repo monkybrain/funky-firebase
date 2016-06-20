@@ -42,6 +42,10 @@ get(ref).then(console.log)
 
 # Set value at ref
 set(ref, {key: 'value'});
+
+# Update value (partial application)
+updateScore = set(scoreRef);
+updateScore(10)
 ```
 
 ### References
@@ -84,31 +88,70 @@ onValue(ref, function(value) {
   });
 ```
 
+### Queries
+
+To be documented...
+
+**orderByKey(ref, key)**
+
+**orderByValue(ref, value)**
+
+**orderByChild(ref, path, value)**
+
+**startAt(value, ref)**
+
+**endAt(value, ref)**
+
+**equalTo(value, ref)**
+
+**limitToFirst(num, ref)**
+
+**limitToLast(num, ref)**
+
+
+
 
 ## First order compositions
 
 ### Mathematical operations
 
-**add(ref, term)**
+Resolve when operations complete
 
-Resolves when operation complete
+**add(ref, term)**
 
 **subtract(ref, term)**
 
-Resolves when operation complete
-
 **multiply(ref, factor)**
 
-Resolves when operation complete
-
 **divide(ref, divisor)**
-
-Resolves when operation complete
 
 _Examples_
 ```
 add(ref, 10)        # add 10 to value at ref
 divide(ref, 10)     # divide value at ref by 10
+```
+
+### Queries
+
+Functions are asynchronous and resolve with query result
+
+**getByKey(ref, key)**
+
+**getByValue(ref, value)**
+
+**getByChild(ref, path, value)**
+
+_Examples_
+```
+# Get user by email address
+users = child(ref, 'users');
+set(users, [
+  {name: 'Thor', email: 'thor@valhalla.is'},
+  {name: 'Odin', email: 'admin@valhalla.is'}
+}]);
+getUserByEmail = getByChild(users, 'email');
+getUserByEmail('admin@valhalla.is')
+.then(console.log)
 ```
 
 ## Second order compositions

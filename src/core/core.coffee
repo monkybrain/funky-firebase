@@ -11,6 +11,8 @@ onEvent = (ref, event, fn) -> ref.on event, (snapshot, prevChildKey) -> fn getVa
 
 module.exports =
 
+
+
   ### OPERATIONS ###
 
   get: curry pipeP getSnapshot, getValue
@@ -25,11 +27,15 @@ module.exports =
 
   transaction: curry (ref, fn) -> ref.transaction fn
 
+
+
   ### REFERENCES ###
 
   child: curry (ref, path) -> ref.child path
 
   url: curry (ref) -> ref.toString()
+
+
 
   ### QUERIES ###
 
@@ -52,6 +58,10 @@ module.exports =
   orderByKey: curry (ref) -> ref.orderByKey()
 
   orderByValue: curry (ref) -> ref.orderByValue()
+
+  orderByChild: curry (ref, path) -> ref.orderByChild(path)
+
+
 
   ### EVENTS ###
 

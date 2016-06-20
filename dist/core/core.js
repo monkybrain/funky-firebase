@@ -72,6 +72,9 @@ module.exports = {
   orderByValue: curry(function(ref) {
     return ref.orderByValue();
   }),
+  orderByChild: curry(function(ref, path) {
+    return ref.orderByChild(path);
+  }),
 
   /* EVENTS */
   onValue: curry(function(ref, fn) {

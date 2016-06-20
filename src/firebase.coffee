@@ -2,5 +2,6 @@
 
 core = require './core/core'
 math = require './compositions/math'
+queries = require './compositions/queries'
 
-module.exports = mergeAll [core, math]
+module.exports = mergeAll [core, math, queries]
