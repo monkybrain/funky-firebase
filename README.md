@@ -12,7 +12,7 @@ Poorly documented and far from complete :-)
 
 ## Core functions
 
-### Operations (asynchronous/promise)
+### Operations (asynchronous)
 
 **get(ref)**
 
@@ -105,9 +105,9 @@ To be documented
 
 ## First order compositions
 
-### Mathematical operations (asynchronous/promise)
+### Mathematical operations (asynchronous)
 
-Functions return promises that resolve without arguments when operation complete
+Functions return promises that resolve when operation complete
 
 **add(ref, term)**
 
@@ -127,11 +127,11 @@ divide(ref, 10)     # divide value at ref by 10
 
 Functions return promises that resolve with corresponding values
 
-**getByKey(ref, key) -> value(s)**
+**getByKey(ref, key)**
 
 **getByValue(ref, value)**
 
-**getByChild(ref, path, value) -> value(s)**
+**getByChild(ref, path, value)**
 
 _Examples_
 ```
@@ -152,6 +152,9 @@ getUserByEmail = getByChild(users, 'email');
 # Use partially applied 'getByChild' function
 getUserByEmail('admin@valhalla.is')
 .then(console.log)
+
+# Result (approx.)
+> {name: 'Odin', email: 'admin@valhalla.is'}
 ```
 
 ## Second order compositions
