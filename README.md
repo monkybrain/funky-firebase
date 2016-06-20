@@ -12,28 +12,17 @@ Poorly documented and far from complete :-)
 
 ## Core functions
 
-### Operations
-Functions are asynchronous and return promises
+### Operations (asynchronous)
 
-**get(ref)**
-
-Resolves with value at ref
+**get(ref) -> value(s)**
 
 **update(ref, data)**
 
-Resolves when operation complete
-
 **set(ref, data)**
-
-Resolves when operation complete
 
 **push(ref, data)**
 
-Resolves when operation complete
-
 **transaction(ref, fn)**
-
-Resolves when operation complete
 
 _Examples_
 ```
@@ -43,16 +32,18 @@ get(ref).then(console.log)
 # Set value at ref
 set(ref, {key: 'value'});
 
-# Update value (partial application)
+# Partially apply 'set' function
 updateScore = set(scoreRef);
+
+# Use partially applied 'set' function
 updateScore(10)
 ```
 
 ### References (synchronous)
 
-**child(ref, path) -> <ref>**
+**child(ref, path) -> ref**
 
-**url(ref) -> <url string>**
+**url(ref) -> url string**
 
 _Examples_
 ```
@@ -83,7 +74,7 @@ onValue(ref, function(value) {
   });
 ```
 
-### Queries
+### Queries (synchronous)
 
 To be documented...
 
@@ -108,7 +99,7 @@ To be documented...
 
 ## First order compositions
 
-### Mathematical operations
+### Mathematical operations (asynchronous)
 
 **add(ref, term)**
 
@@ -124,15 +115,13 @@ add(ref, 10)        # add 10 to value at ref
 divide(ref, 10)     # divide value at ref by 10
 ```
 
-### Queries
+### Queries (asynchronous)
 
-Functions are asynchronous and resolve with query result
+**getByKey(ref, key) -> value(s)**
 
-**getByKey(ref, key)**
+**getByValue(ref, value) -> value(s)**
 
-**getByValue(ref, value)**
-
-**getByChild(ref, path, value)**
+**getByChild(ref, path, value) -> value(s)**
 
 _Examples_
 ```
@@ -150,7 +139,7 @@ set(users, [
 # Partially apply 'getByChild' function
 getUserByEmail = getByChild(users, 'email');
 
-# User partially applied 'getByChild' function
+# Use partially applied 'getByChild' function
 getUserByEmail('admin@valhalla.is')
 .then(console.log)
 ```
