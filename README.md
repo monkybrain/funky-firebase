@@ -48,16 +48,11 @@ updateScore = set(scoreRef);
 updateScore(10)
 ```
 
-### References
-Functions are synchronous
+### References (synchronous)
 
-**child(ref, path)**
+**child(ref, path) -> <ref>**
 
-Returns ref to child
-
-**url(ref)**
-
-Returns absolute url (string) to ref
+**url(ref) -> <url string>**
 
 _Examples_
 ```
@@ -115,8 +110,6 @@ To be documented...
 
 ### Mathematical operations
 
-Resolve when operations complete
-
 **add(ref, term)**
 
 **subtract(ref, term)**
@@ -144,12 +137,16 @@ Functions are asynchronous and resolve with query result
 _Examples_
 ```
 # Get user by email address
+
 users = child(ref, 'users');
+
 set(users, [
   {name: 'Thor', email: 'thor@valhalla.is'},
   {name: 'Odin', email: 'admin@valhalla.is'}
 }]);
+
 getUserByEmail = getByChild(users, 'email');
+
 getUserByEmail('admin@valhalla.is')
 .then(console.log)
 ```
