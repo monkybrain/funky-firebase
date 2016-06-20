@@ -12,11 +12,11 @@ Poorly documented and far from complete :-)
 
 ## Core functions
 
-### Operations (asynchronous)
+### Operations (asynchronous/promise)
 
 **get(ref)**
 
-Returns value
+Resolves with value
 
 **update(ref, data)**
 
@@ -60,8 +60,8 @@ grandchild = child(baseRef, '/child/grandchild');
 console.log(url(grandchild)); # e.g. 'https://test.firebaseio.com/child/grandchild'
 ```
 
-### Events
-Functions are asynchronous and take callbacks as second argument
+### Events (asynchronous/callback)
+Functions take callback as second argument
 
 **onValue(ref, callback(value))**
 
@@ -105,7 +105,9 @@ To be documented
 
 ## First order compositions
 
-### Mathematical operations (asynchronous)
+### Mathematical operations (asynchronous/promise)
+
+Functions return promises that resolve without arguments when operation complete
 
 **add(ref, term)**
 
@@ -123,7 +125,7 @@ divide(ref, 10)     # divide value at ref by 10
 
 ### Queries (asynchronous)
 
-Functions return promises that resolves with corresponding values
+Functions return promises that resolve with corresponding values
 
 **getByKey(ref, key) -> value(s)**
 
