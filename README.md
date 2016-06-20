@@ -14,7 +14,9 @@ Poorly documented and far from complete :-)
 
 ### Operations (asynchronous)
 
-**get(ref) -> value(s)**
+**get(ref)**
+
+Returns value
 
 **update(ref, data)**
 
@@ -27,7 +29,7 @@ Poorly documented and far from complete :-)
 _Examples_
 ```
 # Get and print value at ref
-get(ref).then(console.log)
+get(ref).then(console.log);
 
 # Set value at ref
 set(ref, {key: 'value'});
@@ -41,9 +43,13 @@ updateScore(10)
 
 ### References (synchronous)
 
-**child(ref, path) -> ref**
+**child(ref, path)**
 
-**url(ref) -> url string**
+Returns ref
+
+**url(ref)**
+
+Returns url string
 
 _Examples_
 ```
@@ -76,7 +82,7 @@ onValue(ref, function(value) {
 
 ### Queries (synchronous)
 
-To be documented...
+To be documented
 
 **orderByKey(ref, key)**
 
@@ -117,9 +123,11 @@ divide(ref, 10)     # divide value at ref by 10
 
 ### Queries (asynchronous)
 
+Functions return promises that resolves with corresponding values
+
 **getByKey(ref, key) -> value(s)**
 
-**getByValue(ref, value) -> value(s)**
+**getByValue(ref, value)**
 
 **getByChild(ref, path, value) -> value(s)**
 
