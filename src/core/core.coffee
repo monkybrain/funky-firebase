@@ -11,6 +11,8 @@ onEvent = (ref, event, fn) -> ref.on event, (snapshot, prevChildKey) -> fn getVa
 
 module.exports =
 
+
+
   ### OPERATIONS ###
 
   get: curry pipeP getSnapshot, getValue
@@ -25,11 +27,41 @@ module.exports =
 
   transaction: curry (ref, fn) -> ref.transaction fn
 
+
+
   ### REFERENCES ###
 
   child: curry (ref, path) -> ref.child path
 
   url: curry (ref) -> ref.toString()
+
+
+
+  ### QUERIES ###
+
+  # Start, end, equal
+
+  endAt: curry (value, ref) -> ref.endAt value
+
+  startAt: curry (value, ref) -> ref.startAt value
+
+  equalTo: curry (value, ref) -> ref.equalTo value
+
+  # Limit results
+
+  limitToFirst: curry (num, ref) -> ref.limitToFirst num
+
+  limitToLast: curry (num, ref) -> ref.limitToLast num
+
+  # Order
+
+  orderByKey: curry (ref) -> ref.orderByKey()
+
+  orderByValue: curry (ref) -> ref.orderByValue()
+
+  orderByChild: curry (ref, path) -> ref.orderByChild(path)
+
+
 
   ### EVENTS ###
 

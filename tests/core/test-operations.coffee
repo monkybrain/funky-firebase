@@ -3,9 +3,10 @@ test = require 'tape'
 fs = require 'fs'
 async = require 'async'
 firebase = require 'firebase'
+{pipe} = require 'ramda'
 
 # My Modules
-core = require '../../dist/core/core'
+{get, set, update, push, remove, child} = require '../../dist/core/core'
 
 # Init firebase
 credentials = JSON.parse fs.readFileSync 'res/credentials.json', 'utf-8'
@@ -25,19 +26,24 @@ input =
   object:
     key: 'value'
 
-# 1 - Set and get value
+getRef = child(baseRef)
+
+1 - Set and get value
 tests.push -> test 'Set and get value', (t) ->
 
   t.plan 1
-  ref = baseRef.child 'set_and_get'
 
-  # Set value at ref to input
-  core.set ref, input.string
+  # Helper functions
+  setValue = set getRef 'set_and_get'
+  getValue = -> get getRef 'set_and_get'
+
+  # Set value at ref
+  setValue input.string
 
   # Get value at ref
-  .then -> core.get ref
+  .then -> getValue()
 
-  # TEST: Value should equal input
+  # TEST: Value at ref should equal input
   .then (value) -> t.deepEqual value, input.string
 
   # Catch and report errors
@@ -47,18 +53,20 @@ tests.push -> test 'Set and get value', (t) ->
 tests.push -> test 'Remove value', (t) ->
 
   t.plan 1
-  ref = baseRef.child 'remove'
+
+  # Helpers
+  ref = getRef 'remove'
 
   # Set value at ref to input
-  core.set ref, input.string
+  set ref, input.string
 
   # Remove value at ref
-  .then -> core.remove ref
+  .then -> remove ref
 
   # Get value at ref
-  .then -> core.get ref
+  .then -> get ref
 
-  # TEST: Value should be null
+  # TEST: Value at ref should be null
   .then (value) -> t.deepEqual value, null
 
   # Catch and report errors

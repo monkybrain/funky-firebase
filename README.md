@@ -12,48 +12,44 @@ Poorly documented and far from complete :-)
 
 ## Core functions
 
-### Operations
-Functions are asynchronous and return promises
+### Operations (asynchronous)
 
 **get(ref)**
 
-Resolves with value at ref
+Resolves with value
 
 **update(ref, data)**
 
-Resolves when operation complete
-
 **set(ref, data)**
-
-Resolves when operation complete
 
 **push(ref, data)**
 
-Resolves when operation complete
-
 **transaction(ref, fn)**
-
-Resolves when operation complete
 
 _Examples_
 ```
 # Get and print value at ref
-get(ref).then(console.log)
+get(ref).then(console.log);
 
 # Set value at ref
 set(ref, {key: 'value'});
+
+# Partially apply 'set' function
+updateScore = set(scoreRef);
+
+# Use partially applied 'set' function
+updateScore(10)
 ```
 
-### References
-Functions are synchronous
+### References (synchronous)
 
 **child(ref, path)**
 
-Returns ref to child
+Returns ref
 
 **url(ref)**
 
-Returns absolute url (string) to ref
+Returns url string
 
 _Examples_
 ```
@@ -64,8 +60,8 @@ grandchild = child(baseRef, '/child/grandchild');
 console.log(url(grandchild)); # e.g. 'https://test.firebaseio.com/child/grandchild'
 ```
 
-### Events
-Functions are asynchronous and take callbacks as second argument
+### Events (asynchronous/callback)
+Functions take callback as second argument
 
 **onValue(ref, callback(value))**
 
@@ -84,31 +80,81 @@ onValue(ref, function(value) {
   });
 ```
 
+### Queries (synchronous)
+
+To be documented
+
+**orderByKey(ref, key)**
+
+**orderByValue(ref, value)**
+
+**orderByChild(ref, path, value)**
+
+**startAt(value, ref)**
+
+**endAt(value, ref)**
+
+**equalTo(value, ref)**
+
+**limitToFirst(num, ref)**
+
+**limitToLast(num, ref)**
+
+
+
 
 ## First order compositions
 
-### Mathematical operations
+### Mathematical operations (asynchronous)
+
+Functions return promises that resolve when operation complete
 
 **add(ref, term)**
 
-Resolves when operation complete
-
 **subtract(ref, term)**
-
-Resolves when operation complete
 
 **multiply(ref, factor)**
 
-Resolves when operation complete
-
 **divide(ref, divisor)**
-
-Resolves when operation complete
 
 _Examples_
 ```
 add(ref, 10)        # add 10 to value at ref
 divide(ref, 10)     # divide value at ref by 10
+```
+
+### Queries (asynchronous)
+
+Functions return promises that resolve with corresponding values
+
+**getByKey(ref, key)**
+
+**getByValue(ref, value)**
+
+**getByChild(ref, path, value)**
+
+_Examples_
+```
+### Get user by email address ###
+
+# Get ref
+users = child(ref, 'users');
+
+# Set value at ref
+set(users, [
+  {name: 'Thor', email: 'thor@valhalla.is'},
+  {name: 'Odin', email: 'admin@valhalla.is'}
+}]);
+
+# Partially apply 'getByChild' function
+getUserByEmail = getByChild(users, 'email');
+
+# Use partially applied 'getByChild' function
+getUserByEmail('admin@valhalla.is')
+.then(console.log)
+
+# Result (approx.)
+> {name: 'Odin', email: 'admin@valhalla.is'}
 ```
 
 ## Second order compositions
